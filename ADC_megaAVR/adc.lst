@@ -1,0 +1,173 @@
+   1               		.file	"ADC.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	multiply_with_round
+  18               	multiply_with_round:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	.LVL0:
+  22 0000 0F93      		push r16
+  23 0002 1F93      		push r17
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	.LM2:
+  27 0004 8C01      		movw r16,r24
+  28 0006 20E0      		ldi r18,lo8(0)
+  29 0008 30E0      		ldi r19,hi8(0)
+  30               	.LVL1:
+  31 000a CB01      		movw r24,r22
+  32 000c BA01      		movw r22,r20
+  33 000e A901      		movw r20,r18
+  34 0010 9801      		movw r18,r16
+  35               	.LVL2:
+  36 0012 0E94 0000 		call __mulsi3
+  37 0016 AC01      		movw r20,r24
+  38               	.LVL3:
+  39 0018 DA01      		movw r26,r20
+  40               	.LM3:
+  41 001a 77FD      		sbrc r23,7
+  42               	.LVL4:
+  43               	.LM4:
+  44 001c 1196      		adiw r26,1
+  45               	.LVL5:
+  46               	.L2:
+  47               	.LM5:
+  48 001e CD01      		movw r24,r26
+  49               	/* epilogue start */
+  50 0020 1F91      		pop r17
+  51 0022 0F91      		pop r16
+  52               	.LVL6:
+  53 0024 0895      		ret
+  54               	.LFE2:
+  56               	.global	init_ADC
+  58               	init_ADC:
+  59               	.LFB3:
+  60               	.LM6:
+  61               	/* prologue: function */
+  62               	/* frame size = 0 */
+  63               	.LM7:
+  64 0026 8FED      		ldi r24,lo8(-33)
+  65 0028 86B9      		out 38-32,r24
+  66               	/* epilogue start */
+  67               	.LM8:
+  68 002a 0895      		ret
+  69               	.LFE3:
+  71               	.global	__vector_21
+  73               	__vector_21:
+  74               	.LFB4:
+  75               	.LM9:
+  76 002c 1F92      		push __zero_reg__
+  77 002e 0F92      		push r0
+  78 0030 0FB6      		in r0,__SREG__
+  79 0032 0F92      		push r0
+  80 0034 0BB6      		in r0,91-32
+  81 0036 0F92      		push r0
+  82 0038 1124      		clr __zero_reg__
+  83 003a 2F93      		push r18
+  84 003c 3F93      		push r19
+  85 003e 4F93      		push r20
+  86 0040 5F93      		push r21
+  87 0042 6F93      		push r22
+  88 0044 7F93      		push r23
+  89 0046 8F93      		push r24
+  90 0048 9F93      		push r25
+  91 004a AF93      		push r26
+  92 004c BF93      		push r27
+  93 004e EF93      		push r30
+  94 0050 FF93      		push r31
+  95               	/* prologue: Signal */
+  96               	/* frame size = 0 */
+  97               	.LM10:
+  98 0052 84B1      		in r24,36-32
+  99 0054 95B1      		in r25,(36)+1-32
+ 100               	.LVL7:
+ 101 0056 9370      		andi r25,hi8(1023)
+ 102               	.LM11:
+ 103 0058 9C01      		movw r18,r24
+ 104 005a 220F      		lsl r18
+ 105 005c 331F      		rol r19
+ 106 005e 3093 0000 		sts (napiecie)+1,r19
+ 107 0062 2093 0000 		sts napiecie,r18
+ 108               	.LM12:
+ 109 0066 9093 0000 		sts (prad)+1,r25
+ 110 006a 8093 0000 		sts prad,r24
+ 111               	.LM13:
+ 112 006e 83E0      		ldi r24,lo8(3)
+ 113               	.LVL8:
+ 114 0070 60E0      		ldi r22,lo8(cyfry)
+ 115 0072 70E0      		ldi r23,hi8(cyfry)
+ 116 0074 0E94 0000 		call digits_to_int
+ 117 0078 8093 0000 		sts wsp_wypelnienia,r24
+ 118               	.LM14:
+ 119 007c 90E0      		ldi r25,lo8(0)
+ 120               	.LVL9:
+ 121 007e A0E0      		ldi r26,lo8(0)
+ 122 0080 B0E0      		ldi r27,hi8(0)
+ 123               	.LVL10:
+ 124 0082 BC01      		movw r22,r24
+ 125 0084 CD01      		movw r24,r26
+ 126               	.LVL11:
+ 127 0086 2FEF      		ldi r18,lo8(1023)
+ 128 0088 33E0      		ldi r19,hi8(1023)
+ 129 008a 40E0      		ldi r20,hlo8(1023)
+ 130 008c 50E0      		ldi r21,hhi8(1023)
+ 131 008e 0E94 0000 		call __mulsi3
+ 132               	.LVL12:
+ 133               	.LM15:
+ 134 0092 24E6      		ldi r18,lo8(100)
+ 135 0094 30E0      		ldi r19,hi8(100)
+ 136 0096 40E0      		ldi r20,hlo8(100)
+ 137 0098 50E0      		ldi r21,hhi8(100)
+ 138 009a 0E94 0000 		call __udivmodsi4
+ 139 009e 3BBD      		out (74)+1-32,r19
+ 140 00a0 2ABD      		out 74-32,r18
+ 141               	/* epilogue start */
+ 142               	.LM16:
+ 143 00a2 FF91      		pop r31
+ 144 00a4 EF91      		pop r30
+ 145 00a6 BF91      		pop r27
+ 146 00a8 AF91      		pop r26
+ 147 00aa 9F91      		pop r25
+ 148               	.LVL13:
+ 149 00ac 8F91      		pop r24
+ 150               	.LVL14:
+ 151 00ae 7F91      		pop r23
+ 152 00b0 6F91      		pop r22
+ 153 00b2 5F91      		pop r21
+ 154 00b4 4F91      		pop r20
+ 155 00b6 3F91      		pop r19
+ 156 00b8 2F91      		pop r18
+ 157 00ba 0F90      		pop r0
+ 158 00bc 0BBE      		out 91-32,r0
+ 159 00be 0F90      		pop r0
+ 160 00c0 0FBE      		out __SREG__,r0
+ 161 00c2 0F90      		pop r0
+ 162 00c4 1F90      		pop __zero_reg__
+ 163 00c6 1895      		reti
+ 164               	.LFE4:
+ 206               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 ADC.c
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:2      *ABS*:0000003f __SREG__
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:3      *ABS*:0000003e __SP_H__
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:4      *ABS*:0000003d __SP_L__
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:5      *ABS*:00000034 __CCP__
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:18     .text:00000000 multiply_with_round
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:58     .text:00000026 init_ADC
+C:\Users\LABORA~1\AppData\Local\Temp/ccYNEaym.s:73     .text:0000002c __vector_21
+
+UNDEFINED SYMBOLS
+__mulsi3
+napiecie
+prad
+cyfry
+digits_to_int
+wsp_wypelnienia
+__udivmodsi4

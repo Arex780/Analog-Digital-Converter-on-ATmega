@@ -1,0 +1,49 @@
+   1               		.file	"IN_OUT.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	init_pins
+  18               	init_pins:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 87B3      		in r24,55-32
+  25 0002 806F      		ori r24,lo8(-16)
+  26 0004 87BB      		out 55-32,r24
+  27               	.LM3:
+  28 0006 84B3      		in r24,52-32
+  29 0008 807F      		andi r24,lo8(-16)
+  30 000a 84BB      		out 52-32,r24
+  31               	.LM4:
+  32 000c 84B3      		in r24,52-32
+  33 000e 8F70      		andi r24,lo8(15)
+  34 0010 84BB      		out 52-32,r24
+  35               	.LM5:
+  36 0012 8FEF      		ldi r24,lo8(-1)
+  37 0014 81BB      		out 49-32,r24
+  38               	.LM6:
+  39 0016 82B1      		in r24,34-32
+  40 0018 8C61      		ori r24,lo8(28)
+  41 001a 82B9      		out 34-32,r24
+  42               	/* epilogue start */
+  43               	.LM7:
+  44 001c 0895      		ret
+  45               	.LFE2:
+  71               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 IN_OUT.c
+C:\Users\LABORA~1\AppData\Local\Temp/ccaHzdlr.s:2      *ABS*:0000003f __SREG__
+C:\Users\LABORA~1\AppData\Local\Temp/ccaHzdlr.s:3      *ABS*:0000003e __SP_H__
+C:\Users\LABORA~1\AppData\Local\Temp/ccaHzdlr.s:4      *ABS*:0000003d __SP_L__
+C:\Users\LABORA~1\AppData\Local\Temp/ccaHzdlr.s:5      *ABS*:00000034 __CCP__
+C:\Users\LABORA~1\AppData\Local\Temp/ccaHzdlr.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\LABORA~1\AppData\Local\Temp/ccaHzdlr.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\LABORA~1\AppData\Local\Temp/ccaHzdlr.s:18     .text:00000000 init_pins
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,71 @@
+; ************************************************************
+; PROJECT:
+; AUTHOR:
+; ************************************************************
+
+; Micro + software running
+; ------------------------------------------------------------
+.MICRO "ATmega128"
+.TOOLCHAIN "GCC"
+.GCCPATH   "C:\Windows\System32"
+;.GCCMAKE   "makefile"
+.GCCMAKE   AUTO
+.TARGET    "main.hex"
+.SOURCE    "main.c" "adc.c" "in_out.c" "lcd.c" "pwm.c"
+
+; Following lines are optional; if not included
+; exactly these values are taken by default
+; ------------------------------------------------------------
+.POWER VDD=5 VSS=0  ; Power nodes
+.CLOCK 16meg         ; Micro clock
+.STORE 250m         ; Trace (micro+signals) storage time
+.TRACE              ; Activate micro trace
+
+; Micro nodes: RESET, AREF, PA0-PA7, PB0-PB7, PC0-PC7, PD0-PD7, PE0-PE7, PF0-PF7, PG0-PG4, TIM1OVF
+; Define here the hardware around the micro
+; ------------------------------------------------------------
+
+K1 PC4 GND LATCHED  ;definicja prze³¹cznika SW0
+R1 VDD PC4 1k
+K2 PC5 GND LATCHED  ;definicja prze³¹cznika SW1
+R2 VDD PC5 1k
+K3 PC6 GND LATCHED  ;definicja prze³¹cznika SW2
+R3 VDD PC6 1k
+K4 PC7 GND LATCHED  ;definicja prze³¹cznika SW3
+R4 VDD PC7 1k
+
+KA PC0 GND         ;definicja przycisku KEY0
+R5 VDD PC0 1k
+KB PC1 GND         ;definicja przycisku KEY1
+R6 VDD PC1 1k
+KC PC2 GND         ;definicja przycisku KEY2
+R7 VDD PC2 1k
+KD PC3 GND         ;definicja przycisku KEY3
+R8 VDD PC3 1k
+
+D1 VDD net1
+R9 net1 PB4  1k
+D2 VDD net2
+R10 net2 PB5 1k
+D3 VDD net3
+R11 net3 PB6 1k
+D4 VDD net4
+R12 net4 PB7 1k
+
+R13 VDD AREF 2952
+R14 AREF GND 2048
+R15 PB5 PF0 3k
+R16 PF0 GND	2k
+C0  PF0 GND	1u
+
+.PLOT V(PB5)
+.PLOT V(PF0)
+.PLOT V(PF2)
+
+X1  LCD(20 4 250K) PE2 PE4 PE3 PD7 PD6 PD5 PD4 PD3 PD2 PD1 PD0
+V1  PF2 GND SLIDER_1(0 2.048) ; Panel sliders 1
+
+
+
+
+

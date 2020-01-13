@@ -1,0 +1,7 @@
+Za pomoc¹ przycisków nastawiana zmienna "wspó³czynnik wype³nienia"
+
+"Wspó³czynnik wype³nienia" odpowiednio wp³ywa na czêstotliwoœæ przerwañ, zmieniaj¹c rzeczywisty wsp. wyp. 
+
+
+Dziêki modyfikacji zmienia siê wartoœæ napiêcia -> zmiana pr¹du
+

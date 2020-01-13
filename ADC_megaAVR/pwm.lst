@@ -1,0 +1,71 @@
+   1               		.file	"PWM.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	init_TIMER1
+  18               	init_TIMER1:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 83E8      		ldi r24,lo8(-125)
+  25 0002 8FBD      		out 79-32,r24
+  26               	.LM3:
+  27 0004 81E0      		ldi r24,lo8(1)
+  28 0006 8EBD      		out 78-32,r24
+  29               	.LM4:
+  30 0008 1DBC      		out (76)+1-32,__zero_reg__
+  31 000a 1CBC      		out 76-32,__zero_reg__
+  32               	.LM5:
+  33 000c 1BBC      		out (74)+1-32,__zero_reg__
+  34 000e 1ABC      		out 74-32,__zero_reg__
+  35               	.LM6:
+  36 0010 87B7      		in r24,87-32
+  37 0012 8460      		ori r24,lo8(4)
+  38 0014 87BF      		out 87-32,r24
+  39               	.LM7:
+  40 0016 8FEF      		ldi r24,lo8(-1)
+  41 0018 86BF      		out 86-32,r24
+  42               	/* epilogue start */
+  43               	.LM8:
+  44 001a 0895      		ret
+  45               	.LFE2:
+  47               	.global	__vector_14
+  49               	__vector_14:
+  50               	.LFB3:
+  51               	.LM9:
+  52 001c 1F92      		push __zero_reg__
+  53 001e 0F92      		push r0
+  54 0020 0FB6      		in r0,__SREG__
+  55 0022 0F92      		push r0
+  56 0024 1124      		clr __zero_reg__
+  57               	/* prologue: Signal */
+  58               	/* frame size = 0 */
+  59               	.LM10:
+  60 0026 369A      		sbi 38-32,6
+  61               	/* epilogue start */
+  62               	.LM11:
+  63 0028 0F90      		pop r0
+  64 002a 0FBE      		out __SREG__,r0
+  65 002c 0F90      		pop r0
+  66 002e 1F90      		pop __zero_reg__
+  67 0030 1895      		reti
+  68               	.LFE3:
+ 102               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 PWM.c
+C:\Users\LABORA~1\AppData\Local\Temp/cc26WFfZ.s:2      *ABS*:0000003f __SREG__
+C:\Users\LABORA~1\AppData\Local\Temp/cc26WFfZ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\LABORA~1\AppData\Local\Temp/cc26WFfZ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\LABORA~1\AppData\Local\Temp/cc26WFfZ.s:5      *ABS*:00000034 __CCP__
+C:\Users\LABORA~1\AppData\Local\Temp/cc26WFfZ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\LABORA~1\AppData\Local\Temp/cc26WFfZ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\LABORA~1\AppData\Local\Temp/cc26WFfZ.s:18     .text:00000000 init_TIMER1
+C:\Users\LABORA~1\AppData\Local\Temp/cc26WFfZ.s:49     .text:0000001c __vector_14
+
+NO UNDEFINED SYMBOLS

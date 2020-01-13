@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="__auto">
+</Property><Property Name="Solution File" Value="D:\dokuments\dydaktyka\AVR\Programy_testowe\LCD_ADC\__auto.sln">
+</Property><Property Name="Date" Value="15 października 2010">
+</Property><Property Name="Time" Value="11:00:36">
+</Property></Properties><Event ErrorLevel="2" Project="D:\dokuments\dydaktyka\AVR\Programy_testowe\LCD_ADC\__auto.mak" Source="__auto" Description="Cannot load the project due to a corrupt project file.">
+</Event><Event ErrorLevel="2" Project="__auto" Source="__auto.mak" Description="Project upgrade failed.">
+</Event><Event ErrorLevel="3" Project="__auto" Source="__auto.mak" Description="Not Converted">
+</Event></UpgradeLog>
